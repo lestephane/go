@@ -12,8 +12,8 @@ import (
 	"errors"
 	"fmt"
 	"reflect"
-	"unicode/utf16"
-	"unicode/utf8"
+	//"unicode/utf16"
+	//"unicode/utf8"
 	"unsafe"
 )
 
@@ -326,7 +326,7 @@ func (env JNIEnv) GetVersion() (Version, error) {
 	return Version(result), nil
 }
 
-func (env JNIEnv) DefineClass(name string, loader JObject, buf []byte, _len int) (JClass, error) {
+/*func (env JNIEnv) DefineClass(name string, loader JObject, buf []byte, _len int) (JClass, error) {
 	var result C.jclass
 	WithCString(name, func(c_name *C.char) {
 		header := (*reflect.SliceHeader)(unsafe.Pointer(&buf))
@@ -344,7 +344,7 @@ func (env JNIEnv) DefineClass(name string, loader JObject, buf []byte, _len int)
 	}
 	// TODO: Handle exceptions
 	return GoJClass(result), nil
-}
+}*/
 
 func (env JNIEnv) FindClass(name string) JClass {
 	var result C.jclass
@@ -515,7 +515,7 @@ func (env JNIEnv) CallObjectMethod(obj JObject, methodID JMethodID, args ...inte
 
 // NewString is a middle-level API.
 // Use JStringFromGoString{,E} from jstring.go for general purposes.
-func (env JNIEnv) NewString(s string) (str JString, err error) {
+/*func (env JNIEnv) NewString(s string) (str JString, err error) {
 	// Encoding to UTF-16
 	runes := []rune(s)
 	unicode := utf16.Encode(runes)
@@ -537,6 +537,7 @@ func (env JNIEnv) NewString(s string) (str JString, err error) {
 	// TODO: Deal with OutOfMemoryError
 	return
 }
+*/
 
 // GetStringLength is a middle-level API.
 // Use JString.Len{,E} from jstring.go for general purposes.
@@ -596,6 +597,7 @@ func (env JNIEnv) ReleaseStringChars(str JString, chars []uint16) {
 // As a result, this duplicats the functionality of NewString.
 // This function exists for completeness only.
 // Use JStringFromGoString{,E} from jstring.go for general purposes.
+/*
 func (env JNIEnv) NewStringUTF(s string) (str JString, err error) {
 	// Encoding to "modified UTF-8"
 	// len(s) is a good estimation of the length of utf.
@@ -630,6 +632,7 @@ func (env JNIEnv) NewStringUTF(s string) (str JString, err error) {
 	// TODO: Deal with OutOfMemoryError
 	return
 }
+*/
 
 // GetStringUTFLength is a middle-level API.
 // Use JString.UTFLen{,E} from jstring.go for general purposes.

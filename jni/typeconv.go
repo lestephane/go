@@ -173,8 +173,8 @@ func JValueArray(args ...interface{}) []C.jvalue {
 			result[i] = JValueFromJFloat(v2)
 		case C.jdouble:
 			result[i] = JValueFromJDouble(v2)
-		case C.jsize:
-			result[i] = JValueFromJInt(C.jint(v2))
+		/*case C.jsize:
+			result[i] = JValueFromJInt(C.jint(v2))*/
 		case C.jobject:
 			result[i] = JValueFromJObject(v2)
 		case C.jclass:

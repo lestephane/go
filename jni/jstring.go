@@ -12,17 +12,17 @@ import (
 // JStringFromGoString creates a JString from a Go string.
 // It is the high-level API for the NewString JNI function.
 // errors: NilReturnValueError, OutOfMemoryError
-func JStringFromGoString(s string) (str JString, err error) {
+/*func JStringFromGoString(s string) (str JString, err error) {
 	env := GoJNIEnv(GetDefaultJNIEnv())
 	return JStringFromGoStringE(s, env)
-}
+}*/
 
 // JStringFromGoStringE is like JStringFromGoString, but it accepts a custom JNIEnv.
 // It calls the underlying functions with the provided JNIEnv.
 // errors: NilReturnValueError, OutOfMemoryError
-func JStringFromGoStringE(s string, env JNIEnv) (str JString, err error) {
+/*func JStringFromGoStringE(s string, env JNIEnv) (str JString, err error) {
 	return env.NewString(s)
-}
+}*/
 
 // String creates a Go string from a JString.
 // It implements the fmt.Stringer interface.
